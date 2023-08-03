@@ -10,56 +10,71 @@ int registro(){
 	char nome [40];
 	char sobrenome[40];
 	char cargo[40];
+	int opcao2 =0;
+	
 	
 	printf("\t>> CADASTRO\n\n");
 	printf("Digite o CPF: ");
 	scanf("%s", cpf);
 	
 	strcpy(arquivo, cpf); // Copiar valores de Strings - "cps" p/ "arquivo".
-	
+		
 	FILE *file; // Cria o arquivo.
 	file = fopen(arquivo, "w"); // Abre o arquivo, "w" comando p/ escrever.
 	fprintf(file, "CPF: ");
 	fprintf(file, cpf); // Salva o valor da variavel.
 	fclose(file); // Fecha o arquivo.
-	
+		
 	file = fopen(arquivo, "a"); // Abre o arquivo, "a" comando p/ atualizar.
 	fprintf(file, "\nNOME: "); // Adicionando uma virgula entre os dados.
 	fclose(file);
-	
+		
 	printf("Digite o nome: ");
 	scanf("%s", nome);
-	
+		
 	file = fopen(arquivo, "a");
 	fprintf(file,nome);
 	fclose(file);
-	
+		
 	file = fopen(arquivo, "a"); 
 	fprintf(file, "\nSOBRENOME: "); 
 	fclose(file);
-	
+		
 	printf("Digite o sobrenome: ");
 	scanf("%s", sobrenome);
-	
+		
 	file = fopen(arquivo, "a");
 	fprintf(file,sobrenome);
 	fclose(file);
-		
+			
 	file = fopen(arquivo, "a"); 
 	fprintf(file, "\nCARGO: "); 
 	fclose(file);
-	
+		
 	printf("Digite o cargo: ");
 	scanf("%s", cargo);
-	
+		
 	file = fopen(arquivo, "a");
 	fprintf(file,cargo);
 	fprintf(file,"\n\n");
+	fclose(file); // Fechando 
+		
+	system("cls"); // Limpa tela
 	
-	fclose(file); // Fechando arquivo
+	printf("\t>> CADASTRO\n\n");
+	printf("> Cadastro realizado com sucesso!\n\n");
+	printf(">> Deseja realizar um novo cadastro?\n "); // Opção de novo cadastro
+	printf("\t1 - SIM\n");
+	printf("\t2 - NÃO\n\n");
+	printf("Digite a opção: ");
+	scanf("%d", &opcao2); // armazenamento, lendo escolha do usuário
 	
+	if (opcao2 == 1){ // validação da resposta do usuário
+		system("cls"); // Limpa tela
+		registro();
+	}
 	
-	system("pause");	
+		
 }
 
 int consulta(){
@@ -94,6 +109,7 @@ int consulta(){
 			printf("%s", conteudo);
 		}
 	}
+	
 	
 	system("pause");
 }
